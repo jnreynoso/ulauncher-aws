@@ -73,7 +73,7 @@ class KeywordQueryEventListener(EventListener):
         return RenderResultListAction(items)
 
 def get_orquestador_vehicular():
-    return ExtensionResultItem(icon='images/icon.png',
+    return ExtensionResultItem(icon='images/rimac.png',
                                name='Orquestador Vehicular',
                                description='AWS Step Orquestador Vehicular',
                                on_enter=OpenUrlAction("https://console.aws.amazon.com/apigateway"))
