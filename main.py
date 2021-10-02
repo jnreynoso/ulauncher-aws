@@ -57,7 +57,7 @@ class KeywordQueryEventListener(EventListener):
 
         return RenderResultListAction(items)
 
-def :
+def get_orquestador_vehicular:
     return ExtensionResultItem(icon='images/icon.png',
                                name='AWS Rimac Step Orquestador',
                                description='Orquestador Vehicular',
