@@ -59,13 +59,10 @@ class KeywordQueryEventListener(EventListener):
             my_query_2 = my_list[2]
 
             if my_query_2 != "":
-                if my_query_2 == 'rimac':
-                    items.append(get_orquestador_vehicular)
-                else:
-                    for option in options_rimac.keys():
-                        if string_search_bf(text=option, pattern=my_query_2) != None:
-                            fnCall = options_rimac[option]
-                            items.append(fnCall)
+                for option in options_rimac.keys():
+                    if string_search_bf(text=option, pattern=my_query_2) != None:
+                        fnCall = options_rimac[option]
+                        items.append(fnCall)
 
         items = list(set(items))
 
@@ -77,8 +74,8 @@ class KeywordQueryEventListener(EventListener):
 
 def get_orquestador_vehicular():
     return ExtensionResultItem(icon='images/icon.png',
-                               name='AWS Rimac Step Orquestador',
-                               description='Orquestador Vehicular',
+                               name='Orquestador Vehicular',
+                               description='AWS Step Orquestador Vehicular',
                                on_enter=OpenUrlAction("https://console.aws.amazon.com/apigateway"))
 
 def get_api_gateway_item():
