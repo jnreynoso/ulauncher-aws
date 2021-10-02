@@ -34,6 +34,13 @@ class KeywordQueryEventListener(EventListener):
             'comparison': get_compare, 'route53': get_route53_item, 'dns': get_route53_item, 'sqs': get_sqs_item, 'sns': get_sns_item, 'ses': get_ses_item, 'elasticsearch': get_elasticsearch_item,
             'kms': get_kms_item, 'cloudfront': get_cloudfront_item, 'api': get_api_gateway_item, 'gateway': get_api_gateway_item, 'cloudtrail': get_cloudtrail_item, 'secret': get_secret_item
         }
+
+        options_rimac = {
+            'orquestadorvehicular': get_orquestador_vehicular,
+            'vehicular': get_orquestador_vehicular,
+            'orquestador': get_orquestador_vehicular,
+        }
+
         my_list = event.query.split(" ")
 
         my_query = my_list[1]
@@ -49,7 +56,16 @@ class KeywordQueryEventListener(EventListener):
                             fnCall = options[option]
                             items.append(fnCall)
         elif len(my_list) > 2:
-            pass
+            my_query_2 = my_list[2]
+
+            if my_query_2 != "":
+                if my_query_2 == 'rimac':
+                    items.append(get_orquestador_vehicular)
+                else:
+                    for option in options.keys():
+                        if string_search_bf(text=option, pattern=my_query_2) != None:
+                            fnCall = options[option]
+                            items.append(fnCall)
 
         items = list(set(items))
 
