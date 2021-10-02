@@ -2,14 +2,14 @@
   "required_api_version": "^2.0.0",
   "name": "AWS Launcher",
   "description": "Launcher for AWS services",
-  "developer_name": "Bruno Paz",
+  "developer_name": "Jean Reynoso",
   "icon": "images/icon.png",
   "options": {
     "query_debounce": 0.1
   },
   "preferences": [
     {
-      "id": "kw",
+      "id": "kwa",
       "type": "keyword",
       "name": "AWS Launcher",
       "description": "Quickly access to your AWS Resources",
