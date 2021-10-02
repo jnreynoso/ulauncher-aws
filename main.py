@@ -40,7 +40,7 @@ class KeywordQueryEventListener(EventListener):
         included = []
 
         for option in options.keys():
-            if string_search_bf(text=option, pattern=my_query) != None:
+            if string_search_bf(text=option, pattern="") != None:
                 fnCall = options[option]
                 items.append(fnCall())
 
