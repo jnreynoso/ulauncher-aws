@@ -28,71 +28,70 @@ class KeywordQueryEventListener(EventListener):
         my_query = my_list[1]
         included = []
 
-        if my_query in options:
-            if my_query.find('ec2') != -1:
-                items.append(get_ec2_item())
-            elif my_query.find('ecs') != -1:
-                items.append(get_ecs_item())
-            elif my_query.find('rds') != -1:
-                items.append(get_rds_item())
-            elif my_query.find('s3') != -1:
-                items.append(get_s3_item())
-            elif my_query.find('elasticbeanstalk') != -1:
-                items.append(get_elasticbeanstalk_item())
-            elif my_query.find('elasticache') != -1:
-                items.append(get_elasticache_item())
-            elif my_query.find('cloudwatch') != -1:
-                items.append(get_cloudwatch_item())
-            elif my_query.find('cloudformation') != -1:
-                items.append(get_cloudformation_item())
-            elif my_query.find('vpc') != -1:
-                items.append(get_vpc_item())
-            elif my_query.find('iam') != -1:
-                items.append(get_iam_item())
-            elif my_query.find('ecr') != -1:
-                items.append(get_ecr_item())
-            elif my_query.find('eks') != -1:
-                items.append(get_eks_item())
-            elif my_query.find('lambda') != -1:
-                items.append(get_lambda_item())
-            elif my_query.find('dynamodb') != -1:
-                items.append(get_dynamodb_item())
-            elif my_query in ['managementconsole', 'management', 'console'] and 'managementconsole' not in included:
-                items.append(get_managementconsole_item())
-                included.append('managementconsole')
-            elif my_query in ['support', 'ticket', 'helpdesk', 'help'] and 'support' not in included:
-                items.append(get_support_item())
-                included.append('support')
-            elif my_query in ['billing', 'budget', 'costs'] and 'billing' not in included:
-                items.append(get_billing_item())
-                included.append('billing')
-            elif my_query in ['pricingcalculator', 'pricing', 'price', 'prices', 'calculate', 'calculator'] and 'pricingcalculator' not in included:
-                items.append(get_pricingcalculator())
-                included.append('pricingcalculator')
-            elif my_query in ['compare', 'instancecomparison', 'comparison'] and 'compare' not in included:
-                items.append(get_compare())
-                included.append('compare')
-            elif my_query in ['route53', 'dns'] and 'route53' not in included:
-                items.append(get_route53_item())
-                included.append('route53')
-            elif my_query.find('sqs') != -1:
-                items.append(get_sqs_item())
-            elif my_query.find('sns') != -1:
-                items.append(get_sns_item())
-            elif my_query.find('ses') != -1:
-                items.append(get_ses_item())
-            elif my_query.find('cloudfront') != -1:
-                items.append(get_cloudfront_item())
-            elif my_query.find('kms') != -1:
-                items.append(get_kms_item())
-            elif my_query.find('elasticsearch') != -1:
-                items.append(get_elasticsearch_item())
-            elif my_query in ['api', 'gateway']:
-                items.append(get_api_gateway_item())
-            elif my_query.find('secret') != -1:
-                items.append(get_secret_item())
-            elif my_query.find('cloudtrail') != -1:
-                items.append(get_cloudtrail_item())
+        if my_query.find('ec2') != -1:
+            items.append(get_ec2_item())
+        elif my_query.find('ecs') != -1:
+            items.append(get_ecs_item())
+        elif my_query.find('rds') != -1:
+            items.append(get_rds_item())
+        elif my_query.find('s3') != -1:
+            items.append(get_s3_item())
+        elif my_query.find('elasticbeanstalk') != -1:
+            items.append(get_elasticbeanstalk_item())
+        elif my_query.find('elasticache') != -1:
+            items.append(get_elasticache_item())
+        elif my_query.find('cloudwatch') != -1:
+            items.append(get_cloudwatch_item())
+        elif my_query.find('cloudformation') != -1:
+            items.append(get_cloudformation_item())
+        elif my_query.find('vpc') != -1:
+            items.append(get_vpc_item())
+        elif my_query.find('iam') != -1:
+            items.append(get_iam_item())
+        elif my_query.find('ecr') != -1:
+            items.append(get_ecr_item())
+        elif my_query.find('eks') != -1:
+            items.append(get_eks_item())
+        elif my_query.find('lambda') != -1:
+            items.append(get_lambda_item())
+        elif my_query.find('dynamodb') != -1:
+            items.append(get_dynamodb_item())
+        elif my_query in ['managementconsole', 'management', 'console'] and 'managementconsole' not in included:
+            items.append(get_managementconsole_item())
+            included.append('managementconsole')
+        elif my_query in ['support', 'ticket', 'helpdesk', 'help'] and 'support' not in included:
+            items.append(get_support_item())
+            included.append('support')
+        elif my_query in ['billing', 'budget', 'costs'] and 'billing' not in included:
+            items.append(get_billing_item())
+            included.append('billing')
+        elif my_query in ['pricingcalculator', 'pricing', 'price', 'prices', 'calculate', 'calculator'] and 'pricingcalculator' not in included:
+            items.append(get_pricingcalculator())
+            included.append('pricingcalculator')
+        elif my_query in ['compare', 'instancecomparison', 'comparison'] and 'compare' not in included:
+            items.append(get_compare())
+            included.append('compare')
+        elif my_query in ['route53', 'dns'] and 'route53' not in included:
+            items.append(get_route53_item())
+            included.append('route53')
+        elif my_query.find('sqs') != -1:
+            items.append(get_sqs_item())
+        elif my_query.find('sns') != -1:
+            items.append(get_sns_item())
+        elif my_query.find('ses') != -1:
+            items.append(get_ses_item())
+        elif my_query.find('cloudfront') != -1:
+            items.append(get_cloudfront_item())
+        elif my_query.find('kms') != -1:
+            items.append(get_kms_item())
+        elif my_query.find('elasticsearch') != -1:
+            items.append(get_elasticsearch_item())
+        elif my_query in ['api', 'gateway']:
+            items.append(get_api_gateway_item())
+        elif my_query.find('secret') != -1:
+            items.append(get_secret_item())
+        elif my_query.find('cloudtrail') != -1:
+            items.append(get_cloudtrail_item())
 
         return RenderResultListAction(items)
 
