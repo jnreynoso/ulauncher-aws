@@ -39,7 +39,7 @@ class KeywordQueryEventListener(EventListener):
         my_query = my_list[1]
         included = []
 
-        if len(my_list) < 2:
+        if len(my_list) <= 2:
             if my_query != "":
                 if my_query == 'rimac':
                     items.append(get_orquestador_vehicular)
@@ -48,7 +48,7 @@ class KeywordQueryEventListener(EventListener):
                         if string_search_bf(text=option, pattern=my_query) != None:
                             fnCall = options[option]
                             items.append(fnCall)
-        elif len(my_list) == 2:
+        elif len(my_list) > 2:
             pass
 
         items = list(set(items))
