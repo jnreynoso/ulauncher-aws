@@ -41,15 +41,16 @@ class KeywordQueryEventListener(EventListener):
 
         if len(my_list) == 1 or len(my_list) == 2:
             if my_query != "":
-                for option in options.keys():
-                    if string_search_bf(text=option, pattern=my_query) != None:
-                        fnCall = options[option]
-                        items.append(fnCall)
+                if my_query_2 == 'rimac':
+                    items.append(get_orquestador_vehicular)
+                else:
+                    for option in options.keys():
+                        if string_search_bf(text=option, pattern=my_query) != None:
+                            fnCall = options[option]
+                            items.append(fnCall)
         else:
             my_query_2 = my_list[2]
 
-            if my_query_2 == 'rimac':
-                items.append(get_orquestador_vehicular)
 
         items = list(set(items))
 
