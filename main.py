@@ -29,7 +29,7 @@ class KeywordQueryEventListener(EventListener):
             items.append(get_ecs_item())
             items.append(get_rds_item())
             items.append(get_s3_item())
-            return RenderResultListAction(items)
+            # return RenderResultListAction(items)
         else:
             my_query = my_list[1]
             included = []
