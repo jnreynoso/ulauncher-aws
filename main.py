@@ -42,64 +42,6 @@ class KeywordQueryEventListener(EventListener):
                         items.append(get_ecs_item())
                     elif option in ['rds']:
                         items.append(get_rds_item())
-                    elif option in ['s3']:
-                        items.append(get_s3_item())
-                    elif option in ['elasticbeanstalk']:
-                        items.append(get_elasticbeanstalk_item())
-                    elif option in ['elasticache']:
-                        items.append(get_elasticache_item())
-                    elif option in ['cloudwatch']:
-                        items.append(get_cloudwatch_item())
-                    elif option in ['cloudformation']:
-                        items.append(get_cloudformation_item())
-                    elif option in ['vpc']:
-                        items.append(get_vpc_item())
-                    elif option in ['iam']:
-                        items.append(get_iam_item())
-                    elif option in ['ecr']:
-                        items.append(get_ecr_item())
-                    elif option in ['eks']:
-                        items.append(get_eks_item())
-                    elif option in ['lambda']:
-                        items.append(get_lambda_item())
-                    elif option in ['dynamodb']:
-                        items.append(get_dynamodb_item())
-                    elif option in ['managementconsole', 'management', 'console'] and 'managementconsole' not in included:
-                        items.append(get_managementconsole_item())
-                        included.append('managementconsole')
-                    elif option in ['support', 'ticket', 'helpdesk', 'help'] and 'support' not in included:
-                        items.append(get_support_item())
-                        included.append('support')
-                    elif option in ['billing', 'budget', 'costs'] and 'billing' not in included:
-                        items.append(get_billing_item())
-                        included.append('billing')
-                    elif option in ['pricingcalculator', 'pricing', 'price', 'prices', 'calculate', 'calculator'] and 'pricingcalculator' not in included:
-                        items.append(get_pricingcalculator())
-                        included.append('pricingcalculator')
-                    elif option in ['compare', 'instancecomparison', 'comparison'] and 'compare' not in included:
-                        items.append(get_compare())
-                        included.append('compare')
-                    elif option in ['route53', 'dns'] and 'route53' not in included:
-                        items.append(get_route53_item())
-                        included.append('route53')
-                    elif option in ['sqs']:
-                        items.append(get_sqs_item())
-                    elif option in ['sns']:
-                        items.append(get_sns_item())
-                    elif option in ['ses']:
-                        items.append(get_ses_item())
-                    elif option in ['cloudfront']:
-                        items.append(get_cloudfront_item())
-                    elif option in ['kms']:
-                        items.append(get_kms_item())
-                    elif option in ['elasticsearch']:
-                        items.append(get_elasticsearch_item())
-                    elif option in ['api', 'gateway']:
-                        items.append(get_api_gateway_item())
-                    elif option in ['secret']:
-                        items.append(get_secret_item())
-                    elif option in ['cloudtrail']:
-                        items.append(get_cloudtrail_item())
             return RenderResultListAction(items)
 
 def get_api_gateway_item():
