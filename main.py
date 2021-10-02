@@ -62,9 +62,9 @@ class KeywordQueryEventListener(EventListener):
                 if my_query_2 == 'rimac':
                     items.append(get_orquestador_vehicular)
                 else:
-                    for option in options.keys():
+                    for option in options_rimac.keys():
                         if string_search_bf(text=option, pattern=my_query_2) != None:
-                            fnCall = options[option]
+                            fnCall = options_rimac[option]
                             items.append(fnCall)
 
         items = list(set(items))
