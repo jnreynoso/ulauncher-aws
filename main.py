@@ -94,7 +94,8 @@ class KeywordQueryEventListener(EventListener):
                     items.append(get_secret_item())
                 elif option in ['cloudtrail']:
                     items.append(get_cloudtrail_item())
-            return RenderResultListAction(items)
+
+        return RenderResultListAction(items)
 
 def get_api_gateway_item():
     return ExtensionResultItem(icon='images/icon.png',
