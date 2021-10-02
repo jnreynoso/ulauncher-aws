@@ -39,10 +39,11 @@ class KeywordQueryEventListener(EventListener):
         my_query = my_list[1]
         included = []
 
-        for option in options.keys():
-            if string_search_bf(text=option, pattern="") != None:
-                fnCall = options[option]
-                items.append(fnCall())
+        if my_query != "":
+            for option in options.keys():
+                if string_search_bf(text=option, pattern=my_query) != None:
+                    fnCall = options[option]
+                    items.append(fnCall())
 
         return RenderResultListAction(items)
 
