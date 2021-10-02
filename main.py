@@ -37,7 +37,6 @@ class KeywordQueryEventListener(EventListener):
         my_list = event.query.split(" ")
 
         my_query = my_list[1]
-        my_query_2 = my_list[2]
         included = []
 
         if len(my_list) == 1 or len(my_list) == 2:
@@ -47,6 +46,8 @@ class KeywordQueryEventListener(EventListener):
                         fnCall = options[option]
                         items.append(fnCall)
         else:
+            my_query_2 = my_list[2]
+
             if my_query_2 == 'rimac':
                 items.append(get_orquestador_vehicular)
 
