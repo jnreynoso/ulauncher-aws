@@ -5,6 +5,17 @@ from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
 
+def string_search_bf(*, text, pattern):
+    n, m = len(text), len(pattern)
+    for i in range(1 + (n - m)):
+        match = True
+        for j in range(m):
+            if text[i + j] != pattern[j]:
+                match = False
+                break
+        if match:
+            return i
+
 class GnomeSessionExtension(Extension):
     def __init__(self):
         super(GnomeSessionExtension, self).__init__()
@@ -13,85 +24,25 @@ class GnomeSessionExtension(Extension):
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
         items = []
-        options = [
-                        'ec2', 'ecs', 'rds', 's3', 'elasticbeanstalk', 'elasticache', 'cloudwatch', 'cloudformation', 'vpc', 'iam', 'ecr', 'eks', 'lambda', 'dynamodb',
-                        'managementconsole', 'management', 'console',
-                        'support', 'ticket', 'helpdesk', 'help',
-                        'billing', 'budget', 'costs',
-                        'pricingcalculator', 'pricing', 'price', 'prices', 'calculate', 'calculator',
-                        'compare', 'instancecomparison', 'comparison',
-                        'route53', 'dns', 'sqs', 'sns', 'ses', 'elasticsearch', 'kms', 'cloudfront', 'api', 'gateway',
-                        'cloudtrail', 'secret'
-                  ]
+        options = {
+            'ec2': get_ec2_item, 'ecs': get_ecs_item, 'rds': get_rds_item, 's3': get_s3_item, 'elasticbeanstalk': get_elasticbeanstalk_item, 'elasticache': get_elasticache_item,
+            'cloudwatch': get_cloudwatch_item, 'cloudformation': get_cloudformation_item, 'vpc': get_vpc_item, 'iam': get_iam_item, 'ecr': get_ecr_item, 'eks': get_eks_item,
+            'lambda': get_lambda_item, 'dynamodb': get_dynamodb_item, 'managementconsole': get_managementconsole_item, 'management': get_managementconsole_item,
+            'console': get_managementconsole_item, 'support': get_support_item, 'ticket': get_support_item, 'helpdesk': get_support_item, 'help': get_support_item, 'billing': get_billing_item,
+            'budget': get_billing_item, 'costs': get_billing_item, 'pricingcalculator': get_pricingcalculator, 'pricing': get_pricingcalculator, 'price': get_pricingcalculator,
+            'prices': get_pricingcalculator, 'calculate': get_pricingcalculator, 'calculator': get_pricingcalculator, 'compare': get_compare, 'instancecomparison': get_compare,
+            'comparison': get_compare, 'route53': get_route53_item, 'dns': get_route53_item, 'sqs': get_sqs_item, 'sns': get_sns_item, 'ses': get_ses_item, 'elasticsearch': get_elasticsearch_item,
+            'kms': get_kms_item, 'cloudfront': get_cloudfront_item, 'api': get_api_gateway_item, 'gateway': get_api_gateway_item, 'cloudtrail': get_cloudtrail_item, 'secret': get_secret_item
+        }
         my_list = event.query.split(" ")
 
         my_query = my_list[1]
         included = []
 
-        if my_query in 'ec2':
-            items.append(get_ec2_item())
-        elif my_query in 'ecs':
-            items.append(get_ecs_item())
-        elif my_query in 'rds':
-            items.append(get_rds_item())
-        elif my_query in 's3':
-            items.append(get_s3_item())
-        elif my_query in 'elasticbeanstalk':
-            items.append(get_elasticbeanstalk_item())
-        elif my_query in 'elasticache':
-            items.append(get_elasticache_item())
-        elif my_query in 'cloudwatch':
-            items.append(get_cloudwatch_item())
-        elif my_query in 'cloudformation':
-            items.append(get_cloudformation_item())
-        elif my_query in 'vpc':
-            items.append(get_vpc_item())
-        elif my_query in 'iam':
-            items.append(get_iam_item())
-        elif my_query in 'ecr':
-            items.append(get_ecr_item())
-        elif my_query in 'eks':
-            items.append(get_eks_item())
-        elif my_query in 'lambda':
-            items.append(get_lambda_item())
-        elif my_query in 'dynamodb':
-            items.append(get_dynamodb_item())
-        elif my_query in ['managementconsole', 'management', 'console'] and 'managementconsole' not in included:
-            items.append(get_managementconsole_item())
-            included.append('managementconsole')
-        elif my_query in ['support', 'ticket', 'helpdesk', 'help'] and 'support' not in included:
-            items.append(get_support_item())
-            included.append('support')
-        elif my_query in ['billing', 'budget', 'costs'] and 'billing' not in included:
-            items.append(get_billing_item())
-            included.append('billing')
-        elif my_query in ['pricingcalculator', 'pricing', 'price', 'prices', 'calculate', 'calculator'] and 'pricingcalculator' not in included:
-            items.append(get_pricingcalculator())
-            included.append('pricingcalculator')
-        elif my_query in ['compare', 'instancecomparison', 'comparison'] and 'compare' not in included:
-            items.append(get_compare())
-            included.append('compare')
-        elif my_query in ['route53', 'dns'] and 'route53' not in included:
-            items.append(get_route53_item())
-            included.append('route53')
-        elif my_query in 'sqs':
-            items.append(get_sqs_item())
-        elif my_query in 'sns':
-            items.append(get_sns_item())
-        elif my_query in 'ses':
-            items.append(get_ses_item())
-        elif my_query in 'cloudfront':
-            items.append(get_cloudfront_item())
-        elif my_query in 'kms':
-            items.append(get_kms_item())
-        elif my_query in 'elasticsearch':
-            items.append(get_elasticsearch_item())
-        elif my_query in ['api', 'gateway']:
-            items.append(get_api_gateway_item())
-        elif my_query in 'secret':
-            items.append(get_secret_item())
-        elif my_query in 'cloudtrail':
-            items.append(get_cloudtrail_item())
+        for option in dict_options.keys():
+            if string_search_bf(text=option, pattern=my_query) != None:
+                fnCall = dict_options[option]
+                items.append(fnCall())
 
         return RenderResultListAction(items)
 
