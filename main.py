@@ -41,7 +41,7 @@ class KeywordQueryEventListener(EventListener):
 
         for option in dict_options.keys():
             if string_search_bf(text=option, pattern=my_query) != None:
-                fnCall = dict_options[option]
+                fnCall = options[option]
                 items.append(fnCall())
 
         return RenderResultListAction(items)
