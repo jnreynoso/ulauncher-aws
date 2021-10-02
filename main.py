@@ -29,33 +29,33 @@ class KeywordQueryEventListener(EventListener):
         included = []
 
         if my_query in options:
-            if my_query in 'ec2':
+            if 'ec2'.find(my_query) != -1:
                 items.append(get_ec2_item())
-            elif my_query in 'ecs':
+            elif 'ecs'.find(my_query) != -1:
                 items.append(get_ecs_item())
-            elif my_query in 'rds':
+            elif 'rds'.find(my_query) != -1:
                 items.append(get_rds_item())
-            elif my_query in 's3':
+            elif 's3'.find(my_query) != -1:
                 items.append(get_s3_item())
-            elif my_query in 'elasticbeanstalk':
+            elif 'elasticbeanstalk'.find(my_query) != -1:
                 items.append(get_elasticbeanstalk_item())
-            elif my_query in 'elasticache':
+            elif 'elasticache'.find(my_query) != -1:
                 items.append(get_elasticache_item())
-            elif my_query in 'cloudwatch':
+            elif 'cloudwatch'.find(my_query) != -1:
                 items.append(get_cloudwatch_item())
-            elif my_query in 'cloudformation':
+            elif 'cloudformation'.find(my_query) != -1:
                 items.append(get_cloudformation_item())
-            elif my_query in 'vpc':
+            elif 'vpc'.find(my_query) != -1:
                 items.append(get_vpc_item())
-            elif my_query in 'iam':
+            elif 'iam'.find(my_query) != -1:
                 items.append(get_iam_item())
-            elif my_query in 'ecr':
+            elif 'ecr'.find(my_query) != -1:
                 items.append(get_ecr_item())
-            elif my_query in 'eks':
+            elif 'eks'.find(my_query) != -1:
                 items.append(get_eks_item())
-            elif my_query in 'lambda':
+            elif 'lambda'.find(my_query) != -1:
                 items.append(get_lambda_item())
-            elif my_query in 'dynamodb':
+            elif 'dynamodb'.find(my_query) != -1:
                 items.append(get_dynamodb_item())
             elif my_query in ['managementconsole', 'management', 'console'] and 'managementconsole' not in included:
                 items.append(get_managementconsole_item())
@@ -75,23 +75,23 @@ class KeywordQueryEventListener(EventListener):
             elif my_query in ['route53', 'dns'] and 'route53' not in included:
                 items.append(get_route53_item())
                 included.append('route53')
-            elif my_query in 'sqs':
+            elif 'sqs'.find(my_query) != -1:
                 items.append(get_sqs_item())
-            elif my_query in 'sns':
+            elif 'sns'.find(my_query) != -1:
                 items.append(get_sns_item())
-            elif my_query in 'ses':
+            elif 'ses'.find(my_query) != -1:
                 items.append(get_ses_item())
-            elif my_query in 'cloudfront':
+            elif 'cloudfront'.find(my_query) != -1:
                 items.append(get_cloudfront_item())
-            elif my_query in 'kms':
+            elif 'kms'.find(my_query) != -1:
                 items.append(get_kms_item())
-            elif my_query in 'elasticsearch':
+            elif 'elasticsearch'.find(my_query) != -1:
                 items.append(get_elasticsearch_item())
             elif my_query in ['api', 'gateway']:
                 items.append(get_api_gateway_item())
-            elif my_query in ['secret']:
+            elif 'secret'.find(my_query) != -1:
                 items.append(get_secret_item())
-            elif my_query in ['cloudtrail']:
+            elif 'cloudtrail'.find(my_query) != -1:
                 items.append(get_cloudtrail_item())
 
         return RenderResultListAction(items)
