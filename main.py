@@ -40,20 +40,21 @@ class KeywordQueryEventListener(EventListener):
         my_query_2 = my_list[2]
         included = []
 
-
-        if my_query != "":
-            for option in options.keys():
-                if string_search_bf(text=option, pattern=my_query) != None:
-                    fnCall = options[option]
-                    items.append(fnCall)
+        if len(my_list) == 1 or len(my_list) == 2:
+            if my_query != "":
+                for option in options.keys():
+                    if string_search_bf(text=option, pattern=my_query) != None:
+                        fnCall = options[option]
+                        items.append(fnCall)
         else:
             if my_query_2 == 'rimac':
                 items.append(get_orquestador_vehicular)
 
         items = list(set(items))
 
-        for idx, fn in enumerate(items):
-            items[idx] = fn()
+        if len(items) != 0:
+            for idx, fn in enumerate(items):
+                items[idx] = fn()
 
         return RenderResultListAction(items)
 
