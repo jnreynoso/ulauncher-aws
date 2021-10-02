@@ -43,7 +43,12 @@ class KeywordQueryEventListener(EventListener):
             for option in options.keys():
                 if string_search_bf(text=option, pattern=my_query) != None:
                     fnCall = options[option]
-                    items.append(fnCall())
+                    items.append(fnCall)
+
+        items = list(set(items))
+
+        for idx, fn in enumerate(items):
+            items[idx] = fn()
 
         return RenderResultListAction(items)
 
